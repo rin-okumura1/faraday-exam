@@ -71,7 +71,7 @@ def members_only():
     nro=(len(datos))-1
     if request.method=='POST':
         nroI=request.form["id"]
-        return render_template('members_only.html',nro=nro,obj=datos[int(nroI)])
+        return redirect("https://jsonplaceholder.typicode.com/posts/"+str(nroI))
     
     return render_template('members_only.html',nro=nro)
 
@@ -83,11 +83,11 @@ def registrar():
         email=request.form["email"]
         password=request.form["password"]
         listaDeUsuarios.append({"email":email,"password":password})
-       
+            
         return redirect("/login")
-    else:
+  
 
-        return render_template('registrar.html')
+    return render_template('registrar.html')
 
 
 
@@ -99,6 +99,8 @@ def login():
                    login=i
                    print(i["email"])
                    session["email"]=i["email"]
+                   print(i["email"])
+                                
             if Entra(): 
                 return render_template('login.html',msg="sesion iniciada "+Entra())
             
