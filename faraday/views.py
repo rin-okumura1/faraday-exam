@@ -71,7 +71,7 @@ def members_only():
     nro=(len(datos))-1
     if request.method=='POST':
         nroI=request.form["id"]
-        return redirect("https://jsonplaceholder.typicode.com/posts/"+str(nroI))
+        return  render_template('members_only.html',nro=nro,obj=datos[int(nroI)])
     
     return render_template('members_only.html',nro=nro)
 
